@@ -1,0 +1,61 @@
+---
+title: "SD&Correlation Simulation data test"
+author: "Yumo Peng"
+date: "October 21, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Try different values for standard deviation and different values for phi
+
+```{r}
+
+sd<-c(2:20)
+sd
+
+phi <- c(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)
+
+phi
+
+```
+
+
+#Just the data:
+```{r}
+
+simul_fun <- function(sigma, phi, length){
+  
+  ar1 <- arima.sim(n = length, list(ar = c(phi)), sd = sigma)
+  return(ar1)
+
+}
+
+```
+
+Get simulation data based on each of the standard deviation and each of the phi
+
+```{r}
+
+sd<-c(2:10)
+
+
+phi <- c(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)
+data_list <- list() #empty data
+
+for(val in sd){
+  for(val2 in phi){
+    data = as.data.frame(simul_fun(val, val2, 5))
+  }
+    for (i in 1:length(sd)){
+    data_list[i] <- data
+  }
+
+}
+#list_df = lapply(ls(), get)
+
+#ls()
+
+```
