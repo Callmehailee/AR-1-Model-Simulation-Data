@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## Will split comma-separated data into columns.
+##From Dr.Foley
 
 
 USAGE="""
